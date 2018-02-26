@@ -1,0 +1,62 @@
+[
+  {
+    "student" : {
+      "name" : "John Doe",
+      "id" : "ABC123"
+    },
+    "results" : {
+      "operatingSystems" : [3,4],
+      "objectOrientedProgramming" : [1,2],
+      "coputerNetworks" : [5,6],
+      "softwareEngineering" : [1,7]
+    }
+  },
+  {
+    "student" : {
+      "name" : "Jane Doe",
+      "id" : "DEF123"
+    },
+    "results" : {
+      "operatingSystems" : [1,1],
+      "objectOrientedProgramming" : [1,2],
+      "coputerNetworks" : [5,0],
+      "softwareEngineering" : [0,7]
+    }
+  },
+  {
+    "student" : {
+      "name" : "Tony Stark",
+      "id" : "DEF321"
+    },
+    "results" : {
+      "operatingSystems" : [8,8],
+      "objectOrientedProgramming" : [8,7],
+      "coputerNetworks" : [8,7],
+      "softwareEngineering" : [8,7]
+    }
+  },
+  {
+    "student" : {
+      "name" : "Bruce Banner",
+      "id" : "ABC789"
+    },
+    "results" : {
+      "operatingSystems" : [3,4],
+      "objectOrientedProgramming" : [2,9],
+      "coputerNetworks" : [5,6],
+      "softwareEngineering" : [8,7]
+    }
+  },
+  {
+    "student" : {
+      "name" : "Steven Strange",
+      "id" : "ABC123"
+    },
+    "results" : {
+      "operatingSystems" : [7,3],
+      "objectOrientedProgramming" : [1,2],
+      "coputerNetworks" : [3,1],
+      "softwareEngineering" : [8,7]
+    }
+  }
+]
