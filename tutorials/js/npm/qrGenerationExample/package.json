@@ -1,0 +1,11 @@
+{
+  "name": "qr-generation-example",
+  "version": "1.0.0",
+  "description": "This example presents the usage of npm. It uses the qr-code-js module to generate a QR code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zsolt Toth",
+  "license": "ISC"
+}
