@@ -33,4 +33,13 @@ router.get('/div',function (req,res) {
     res.send(''+result);
 });
 
+router.get('/fact',function(req, res){
+    var n = parseInt(req.query['n']) || 0;
+    res.send(''+calcualtorService.fact(n));
+});
+
+router.get('/fact/:n',function (req,res) {
+    res.send(''+calcualtorService.fact(req.params.n));
+});
+
 module.exports = router;
