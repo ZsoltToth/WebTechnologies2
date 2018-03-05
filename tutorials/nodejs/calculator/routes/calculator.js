@@ -42,4 +42,8 @@ router.get('/fact/:n',function (req,res) {
     res.send(''+calcualtorService.fact(req.params.n));
 });
 
+router.post('/sum',function (req,res) {
+    res.status(200).send(''+calcualtorService.sum(req.body));
+});
+
 module.exports = router;

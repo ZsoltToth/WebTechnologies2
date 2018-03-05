@@ -12,9 +12,17 @@ function fact(n) {
     }
     return n * fact(n - 1);
 }
+function sum(nums){
+    var result = 0;
+    for(i = 0; i < nums.length; i++){
+        result += nums[i];
+    }
+    return result;
+}
 
 exports.add = add;
 exports.sub = sub;
 exports.mul = mul;
 exports.div = div;
 exports.fact = fact;
+exports.sum = sum;
