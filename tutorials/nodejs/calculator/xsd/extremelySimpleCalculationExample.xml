@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<value
+        xmlns="http://iit.uni.miskolc.hu/webtech2/nodejs/calculator"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://iit.uni.miskolc.hu/webtech2/nodejs/calculator calculatorDTO.xsd"
+>
+4
+</value>

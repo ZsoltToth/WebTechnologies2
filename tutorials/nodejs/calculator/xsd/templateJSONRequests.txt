@@ -1,0 +1,42 @@
+#1 extremelySimpleCalculationExample.xml
+Request
+POST /calc
+{4}
+
+Response
+200 OK
+4
+---------------------------------------
+#2 simpleCalculationExample.xml
+Request
+POST /calc
+{
+    "firstOperand" : 5,
+    "operation" : "+",
+    "secondOperand": 3
+}
+
+Response
+200 OK
+8
+---------------------------------------
+#3 difficultCalculationExample.xml
+Request
+POST /calc
+{
+    "firstOperand" : {
+        "firstOperand" : 5,
+        "operation" : "+",
+        "secondOperand" : 3
+    },
+    "operation" : "-",
+    "secondOperand" : 3
+}
+
+Response
+5
+
+---------------------------------------
+Have fun with implementation :)
+---------------------------------------
+

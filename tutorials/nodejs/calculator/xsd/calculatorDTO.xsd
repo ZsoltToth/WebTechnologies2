@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://iit.uni.miskolc.hu/webtech2/nodejs/calculator"
+        targetNamespace="http://iit.uni.miskolc.hu/webtech2/nodejs/calculator">
+    <simpleType name="operation">
+        <restriction base="string">
+            <enumeration value="+"/>
+            <enumeration value="-"/>
+            <enumeration value="*"/>
+            <enumeration value="/"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="numericValue">
+        <simpleContent>
+            <extension base="integer"/>
+        </simpleContent>
+    </complexType>
+
+    <complexType name="operand">
+        <choice>
+            <element name="calculation" type="tns:calculation"/>
+            <element name="value" type="tns:numericValue"/>
+        </choice>
+    </complexType>
+
+
+    <complexType name="calculation">
+        <complexContent>
+            <extension base="tns:numericValue">
+                <sequence>
+                    <element name="firstOperand" type="tns:operand"/>
+                    <element name="operation" type="tns:operation"/>
+                    <element name="secondOperand" type="tns:operand"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <element name="value" type="tns:numericValue"/>
+    <element name="calculation" type="tns:calculation"/>
+    <element name="calculationRequest" type="tns:calculation"/>
+    <element name="calculationResponse" type="tns:numericValue"/>
+</schema>
