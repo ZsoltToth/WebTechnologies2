@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental Web Application</title>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        function listCars() {
+            $.get('listCars',function(data){
+                console.log(data);
+                $('#content').html(data);
+            });
+        }
+    </script>
+</head>
+<body>
+<button onclick="listCars()">Click me</button>
+<div id="content">Dummy Content</div>
+</body>
+</html>
