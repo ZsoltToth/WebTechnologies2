@@ -23,4 +23,4 @@ var CarSchema = new Schema({
     yearOfProduction : Number
 });
 
-module.exports = mongoose.model('Car',CarSchema);
+module.exports = db.model('cars',CarSchema);

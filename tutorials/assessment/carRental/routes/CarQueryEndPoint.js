@@ -17,7 +17,6 @@ router.get('/listCars',function(req,res){
 
 router.post('/cars/record',function(req,res){
 
-
     Car.create({
         _id : req.body['id'],
         plateNo : req.body['plateNo'],
@@ -30,9 +29,7 @@ router.post('/cars/record',function(req,res){
         console.log(err);
         console.log(doc);
         res.status(415).send(err +' '+doc);
-        return;
     });
-
     res.status(200).send('');
 });
 
