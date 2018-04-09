@@ -34,7 +34,7 @@ router.post('/cars/record',function(req,res){
         _id : new mongoose.Types.ObjectId(),
         plateNo : req.body['plateNo'],
         color : req.body['color'],
-        produrer : req.body['producer'],
+        producer : req.body['producer'],
         brand : req.body['brand'],
         yearOfProduction : req.body['yearOfProduction']
     }, function (err,doc) {
@@ -46,5 +46,31 @@ router.post('/cars/record',function(req,res){
         res.status(415).send(err +' '+doc);
     });
 });
+
+router.post('/cars/update',function(req,res){
+
+    Car.find({'plateNo' : req.body['plateNo']}).exec(function(err,cars){
+        if(err){
+            console.log(err);
+        }
+        for(var i = 0; i < cars.length; i++){
+            cars[i].color = req.body['color'];
+            cars[i].producer = req.body['producer'];
+            cars[i].brand = req.body['brand'];
+            cars[i].yearOfProduction = req.body['yearOfProduction'];
+            cars[i].save();
+        }
+        res.status(200).send(cars);
+    });
+});
+
+router.get('/cars/remove',function(req,res){
+    if(typeof req.query['plateNo'] == 'undefined'){
+        res.status(415).send('Plate Number is required!');
+    }
+    Car.remove({'plateNo' : req.query['plateNo']}, function(err){console.log(err);});
+    res.status(200).send(req.query['plateNo']+' has been removed!');
+});
+
 
 module.exports = router;
