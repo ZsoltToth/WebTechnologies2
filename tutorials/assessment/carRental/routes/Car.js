@@ -15,7 +15,7 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var CarSchema = new Schema({
-    _id : Number,
+    _id : Schema.ObjectId,
     plateNo : String,
     color : String,
     producer : String,

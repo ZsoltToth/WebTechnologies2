@@ -15,6 +15,13 @@ router.get('/listCars',function(req,res){
     ];
     res.status(200).send(cars);
     */
+    if(typeof req.query['plateNo'] != 'undefined'){
+        Car.find({'plateNo' : req.query['plateNo']}).exec(function(err,doc){
+            res.status(200).send(doc);
+        });
+        console.log('plateNo is %s',req.query['plateNo']);
+        return;
+    }
     Car.find({}).exec(function(err, doc) {
         res.status(200).send(doc);
     });
@@ -24,19 +31,20 @@ router.get('/listCars',function(req,res){
 router.post('/cars/record',function(req,res){
 
     Car.create({
-        _id : req.body['id'],
+        _id : new mongoose.Types.ObjectId(),
         plateNo : req.body['plateNo'],
         color : req.body['color'],
         produrer : req.body['producer'],
         brand : req.body['brand'],
         yearOfProduction : req.body['yearOfProduction']
     }, function (err,doc) {
-
+        if(err){
+            return console.log(err);
+        }
         console.log(err);
         console.log(doc);
         res.status(415).send(err +' '+doc);
     });
-    res.status(200).send('');
 });
 
 module.exports = router;
