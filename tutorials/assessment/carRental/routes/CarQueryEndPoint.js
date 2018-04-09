@@ -7,12 +7,18 @@ var Car = require('./Car');
 var mongoose = require('mongoose');
 
 router.get('/listCars',function(req,res){
+    /*
     var cars = [
         {id:0, plateNo:"ABC123", color:"blue", producer:"Suzuki", brand:"Swift", yearOfProduction:2000},
         {id:1, plateNo:"DEF123", color:"green", producer:"Suzuki", brand:"Swift", yearOfProduction:2000},
         {id:2, plateNo:"GHI123", color:"blue", producer:"Opel", brand:"Astra", yearOfProduction:2000}
     ];
     res.status(200).send(cars);
+    */
+    Car.find({}).exec(function(err, doc) {
+        res.status(200).send(doc);
+    });
+
 });
 
 router.post('/cars/record',function(req,res){
