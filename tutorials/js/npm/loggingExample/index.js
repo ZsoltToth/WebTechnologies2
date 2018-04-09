@@ -78,4 +78,4 @@ fs.readFile('./examResults.json',{encoding : "utf8", flag : 'r'},function(err,da
        }
    });
 });
-console.log('Hello World')
+console.log('Hello World');

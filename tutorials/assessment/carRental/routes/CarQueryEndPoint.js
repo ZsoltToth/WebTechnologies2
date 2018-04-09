@@ -3,6 +3,8 @@
  */
 var express = require('express');
 var router = express.Router();
+var Car = require('./Car');
+var mongoose = require('mongoose');
 
 router.get('/listCars',function(req,res){
     var cars = [
@@ -11,6 +13,27 @@ router.get('/listCars',function(req,res){
         {id:2, plateNo:"GHI123", color:"blue", producer:"Opel", brand:"Astra", yearOfProduction:2000}
     ];
     res.status(200).send(cars);
+});
+
+router.post('/cars/record',function(req,res){
+
+
+    Car.create({
+        _id : req.body['id'],
+        plateNo : req.body['plateNo'],
+        color : req.body['color'],
+        produrer : req.body['producer'],
+        brand : req.body['brand'],
+        yearOfProduction : req.body['yearOfProduction']
+    }, function (err,doc) {
+
+        console.log(err);
+        console.log(doc);
+        res.status(415).send(err +' '+doc);
+        return;
+    });
+
+    res.status(200).send('');
 });
 
 module.exports = router;
