@@ -7,10 +7,10 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script>
         function listCars() {
-            $.get('listCars',function(data){
+            $.get('listCars', function (data) {
                 console.log(data);
                 var table = document.createElement('table');
-                for(var i = 0; i < data.length; i++){
+                for (var i = 0; i < data.length; i++) {
                     var row = document.createElement('tr');
                     var plateNo = document.createElement('td');
                     plateNo.append(data[i].plateNo);//data[i].plateNo;
@@ -37,7 +37,18 @@
     </script>
 </head>
 <body>
-<button onclick="listCars()">Click me</button>
-<div id="content">Dummy Content</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <button onclick="listCars()">Click me</button>
+        </div>
+        <div class="col-md-8">
+            <p>Lorem ipsum ...</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="content">Dummy Content</div>
+    </div>
+</div>
 </body>
 </html>
