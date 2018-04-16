@@ -11,7 +11,9 @@
     "jquery": "3.3.1"
   },
   "scripts": {
-    "prestart": "scss scss/myStyle.scss public/css/style.css",
+    "js" : "browserify js/frontend.js -o public/js/bundle.js",
+    "css": "scss scss/myStyle.scss public/css/style.css",
+    "prestart": "npm run css && npm run js",
     "start": "node app.js",
     "say-hello" : "echo 'Hello World'"
   }
