@@ -1,3 +1,7 @@
-$baseColor : red;
-$secondaryColor : teal;
-$baseFontSize : 24px;
+//Override the Bootstrap variables here.
+//See
+// node_modules/bootsrap-sass/assets/stylesheets/bootsrap/_bootsrap
+// node_modules/bootsrap-sass/assets/stylesheets/bootsrap/_variables
+
+$body-bg : red;
+$text-color: teal;
