@@ -1,5 +1,17 @@
+$baseColor : lime;
+$secondaryColor : purple;
+$baseFontSize : 24px;
 html body {
-  background: lime;
-  color : purple;
-  font-size: 24px;
+  background: $baseColor;
+  color : $secondaryColor;
+  font-size: $baseFontSize;
+}
+
+button {
+  color: $secondaryColor;
+}
+
+table {
+  border: $secondaryColor;
+  font-size: 0.5*$baseFontSize;
 }

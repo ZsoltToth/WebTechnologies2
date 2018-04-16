@@ -9,5 +9,8 @@
     "mongoose": "^5.0.13"
   },
   "scripts": {
+    "prestart": "scss scss/myStyle.scss public/css/style.css",
+    "start": "node app.js",
+    "say-hello" : "echo 'Hello World'"
   }
 }
