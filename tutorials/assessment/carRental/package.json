@@ -8,13 +8,14 @@
     "typescript": "^2.7.2",
     "mongoose": "^5.0.13",
     "bootstrap-sass": "^3.3.7",
-    "jquery": "3.3.1"
+    "jquery": "3.3.1",
+    "bowserify": "^10.2.1",
+    "uglify-js": "^3.3.21"
   },
   "scripts": {
-    "js" : "browserify js/frontend.js -o public/js/bundle.js",
-    "css": "scss scss/myStyle.scss public/css/style.css",
+    "js" : "browserify js/bundle.js | uglifyjs > public/js/bundle.js",
+    "css": "scss scss/myStyle.scss -t compressed public/css/style.css",
     "prestart": "npm run css && npm run js",
     "start": "node app.js",
-    "say-hello" : "echo 'Hello World'"
   }
 }
