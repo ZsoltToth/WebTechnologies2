@@ -1,17 +1,2 @@
-$baseColor : lime;
-$secondaryColor : purple;
-$baseFontSize : 24px;
-html body {
-  background: $baseColor;
-  color : $secondaryColor;
-  font-size: $baseFontSize;
-}
-
-button {
-  color: $secondaryColor;
-}
-
-table {
-  border: $secondaryColor;
-  font-size: 0.5*$baseFontSize;
-}
+@import "_config.scss";
+@import "_layout.scss";

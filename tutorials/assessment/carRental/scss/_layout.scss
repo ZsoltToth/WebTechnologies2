@@ -1,0 +1,21 @@
+html body {
+  background: $baseColor;
+  color : $secondaryColor;
+  font-size: $baseFontSize;
+}
+
+button {
+  color: $secondaryColor;
+}
+
+table {
+  border: $secondaryColor;
+  font-size: 0.5*$baseFontSize;
+  th {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  td {
+    text-transform: capitalize;
+  }
+}
