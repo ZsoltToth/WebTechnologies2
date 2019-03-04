@@ -27,6 +27,15 @@ app.post('/parkinglot/park',(req,res)=>{
    }
 });
 
+app.get('/parkinglot',(req,res)=>{
+    //Implement this method to return a formatted version of the parking Lot
+   res.status(200).send({
+       P0 : [null,null,null],
+       P1 : [null, {plateNo : "ABC-123", color : "red"}, null,null],
+       P2 : [{plateNo:"DEF-456", "blue"}, null]
+    });
+});
+
 
 
 app.listen(port, ()=>{
