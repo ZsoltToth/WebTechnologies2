@@ -28,12 +28,16 @@ app.post('/parkinglot/park',(req,res)=>{
 });
 
 app.get('/parkinglot',(req,res)=>{
-    //Implement this method to return a formatted version of the parking Lot
-   res.status(200).send({
-       P0 : [null,null,null],
-       P1 : [null, {plateNo : "ABC-123", color : "red"}, null,null],
-       P2 : [{plateNo:"DEF-456", color : "blue"}, null]
-    });
+    var result = {};
+    var shift = 0;
+    for( var levelIndex = 0; levelIndex < parkingLot.slotsPerLevel.length; levelIndex++){
+        result[`L${levelIndex}`] = [];
+        for(var slotIndex = 0; slotIndex < parkingLot.slotsPerLevel[levelIndex]; slotIndex++){
+            result[`L${levelIndex}`].push(parkingLot.slots[shift+slotIndex]);
+        }
+        shift += parkingLot.slotsPerLevel[levelIndex];
+    }
+   res.status(200).send(result);
 });
 
 
