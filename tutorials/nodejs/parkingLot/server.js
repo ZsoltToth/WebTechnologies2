@@ -32,7 +32,7 @@ app.get('/parkinglot',(req,res)=>{
    res.status(200).send({
        P0 : [null,null,null],
        P1 : [null, {plateNo : "ABC-123", color : "red"}, null,null],
-       P2 : [{plateNo:"DEF-456", "blue"}, null]
+       P2 : [{plateNo:"DEF-456", color : "blue"}, null]
     });
 });
 
