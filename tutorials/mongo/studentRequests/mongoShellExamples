@@ -1,0 +1,62 @@
+/*
+docker run -p <hostPort>:<guestPort> -v <hostDir>:<guestDir> mongo
+docker run -p 27017:27017 -v `pwd`/data:/data/db mongo
+*/
+
+/*
+#apt-get	install mongo-clients
+mongo localhost:27017
+*/
+
+//List Databases
+show dbs
+//Select DB
+use student_requests
+//List Collections of current DB
+show collections
+
+db.requests.insertMany([
+{
+	"student" : { "name" : "Student Two", "studentId" : "stud02", "programme" : "Computer Science" }, 
+	"desc" : "I would like to learn Software Engineering." },
+{
+	"student" : { "name" : "Student One", "studentId" : "stud01", "programme" : "Computer Science" }, 
+	"desc" : "I would like to learn MongoDB." },
+{
+	"student" : { "name" : "Student Three", "studentId" : "stud03", "programme" : "Psychology" }, 
+	"desc" : "I would like learn from Prof. Lecther." }
+])
+//Select *
+db.requests.find()
+
+db.requests.updateMany(
+	{"student.studentId":"stud01"},  //Query
+	{$set:{"sign":"stud01Sign"}}	//Update
+	)
+
+ db.requests.find({"sign":{$ne:null}})
+
+ db.requests.update(
+ 	{"_id" : ObjectId("5c869c04217efbc72125a225")},
+ 	{$push: {
+ 		"teacherComments" : {
+ 			"teacher":"Teacher One", 
+ 			"comment": "Of course Not", 
+ 			"sign": "teacher01Sign"}
+ 		}
+ 	})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
