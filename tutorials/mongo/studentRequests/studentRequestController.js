@@ -37,7 +37,11 @@ router.post('/submitRequest', (req,res) =>{
         res.status(414).send("Request description must be defined");
         return;
     }
-    res.status(200).send("OK")
+    studentRequestService.submitRequest(
+        {student : req.body['student'], desc : req.body['desc']},
+        () => {res.status(200).send("Request recorded")},
+        (cause) => {res.status(400).send(cause)}
+        )
 })
 
 module.exports = router;

@@ -25,7 +25,13 @@ function listRequestsOfStudent(studentId, callback){
     })
 }
 
+function submitRequest(request,success, error){
+    console.log(request)
+    success()
+}
+
 module.exports = {
     "listRequests" : listRequests,
-    "listRequestsOfStudent" : listRequestsOfStudent
+    "listRequestsOfStudent" : listRequestsOfStudent,
+    "submitRequest" : submitRequest
 }
