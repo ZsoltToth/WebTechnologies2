@@ -25,9 +25,19 @@ function listRequestsOfStudent(studentId, callback){
     })
 }
 
+function listCommentableRequests(){
+    //TODO Implement
+}
+
+function listReady2VerdictRequests(){
+    //TODO Implement
+}
+
 function submitRequest(request,success, error){
-    console.log(request)
-    success()
+    //TODO Add Timestamp. ISODate
+    //TODO Add proper signature; MD5 Hash of Student, Description & Timestamp
+    request['sign'] = request['student']['name']+" signature"
+    studentRequestDAO.createRequest(request, ()=>{success()})
 }
 
 module.exports = {

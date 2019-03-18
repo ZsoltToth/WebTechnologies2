@@ -37,8 +37,27 @@ function readRequestsOfStudent(studentId,callback){
     readRequests({"student.studentId" : studentId},(result) => {callback(result)})
 }
 
+function createRequest(request,callback){
+    var client = new MongoClient(url);
+    client.connect((err)=>{
+        assert.equal(null, err);
+        //console.log("Connected successfully to server");
+
+        const db = client.db(dbName);
+        const collection= db.collection(collectionName)
+
+        collection.insertOne(request,(err,r)=>{
+            assert.equal(null, err);
+            assert.equal(1, r.insertedCount);
+            client.close();
+            callback()
+        })
+    })
+}
+
 
 module.exports = {
+    "createRequest" : createRequest,
     "readRequests" : readAllRequests,
     "readRequestsOfStudent" : readRequestsOfStudent
 }
