@@ -1,4 +1,5 @@
 var winston = require('winston')
+var md5 = require('md5.js')
 const logger = winston.createLogger({
     level: 'info',
     format: winston.format.json(),
@@ -34,9 +35,11 @@ function listReady2VerdictRequests(){
 }
 
 function submitRequest(request,success, error){
-    //TODO Add Timestamp. ISODate
-    //TODO Add proper signature; MD5 Hash of Student, Description & Timestamp
-    request['sign'] = request['student']['name']+" signature"
+    request['date'] = new Date().toISOString()
+    request['sign'] = new md5().update(JSON.stringify({
+        student: request['student'],
+        desc : request['desc'],
+        date : request['date']})).digest('hex')
     studentRequestDAO.createRequest(request, ()=>{success()})
 }
 
