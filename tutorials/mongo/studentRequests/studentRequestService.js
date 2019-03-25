@@ -1,5 +1,5 @@
 
-function StudentRequestService(){
+function StudentRequestService( studentRequestDAO){
 
     winston = require('winston')
     md5 = require('md5.js')
@@ -12,8 +12,12 @@ function StudentRequestService(){
             new winston.transports.File({ filename: 'combined.log' })
         ]
     });
-
-    this.studentRequestDAO = require('./studentRequestDAO')
+    if(studentRequestDAO != undefined && studentRequestDAO != null){
+        this.studentRequestDAO = studentRequestDAO;
+    }
+    else {
+        this.studentRequestDAO = require('./studentRequestDAO')
+    }
 }
 
 
