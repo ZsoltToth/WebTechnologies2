@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const studentRequestService = require('./studentRequestService')
+var srs = require('./studentRequestService')
+const studentRequestService = new srs()
 
 router.get('/listRequests',(req,res) =>{
     if(req.query['studentId'] != undefined){

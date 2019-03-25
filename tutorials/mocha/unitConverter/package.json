@@ -1,0 +1,12 @@
+{
+  "name": "unitConverter",
+  "version": "1.0.0",
+  "dependencies": {
+    "mocha": "^6.0.2",
+    "assert": "^1.4.1",
+    "chai": "^4.2.0"
+  },
+  "scripts": {
+    "test" : "mocha"
+  }
+}
