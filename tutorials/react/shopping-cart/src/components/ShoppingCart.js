@@ -34,9 +34,14 @@ class ShoppingCart  extends React.Component{
             return
         }
         this.state.cart[itemIndex].quantity -= 1
+        /*
         if(this.state.cart[itemIndex].quantity === 0){
             this.state.cart.splice(itemIndex)
         }
+        */
+        this.state.cart = this.state.cart.filter( (element) => {
+            return element.quantity != 0
+        })
         //Should be replace with setState()
         this.forceUpdate()
     }
