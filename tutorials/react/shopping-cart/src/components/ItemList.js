@@ -4,7 +4,6 @@ class ItemList extends React.Component{
 
     constructor(props) {
         super(props);
-
         //Predefined Items
         //It should be provided by the server
         this.state = {
@@ -21,16 +20,16 @@ class ItemList extends React.Component{
         }
     }
 
-    addCart(item){
-        console.log(item)
-    }
-
     render() {
         return(
             <ul className="list-group">
                 {this.state.items.map(
                     (item) => {
-                        return (<li key={item._id} className="list-group-item" onClick={() => this.addCart(item)}>
+                        return (
+                            <li
+                                key={item._id}
+                                className="list-group-item"
+                                onClick={() => this.props.selectItem(item)}>
                             <span>{item.name}</span>
                             <span className="float-right badge-info"> {item.price}$ </span>
                             </li>)
