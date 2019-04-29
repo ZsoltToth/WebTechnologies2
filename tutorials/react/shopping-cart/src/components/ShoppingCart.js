@@ -41,14 +41,26 @@ class ShoppingCart  extends React.Component{
         this.forceUpdate()
     }
 
+    calculateSum(){
 
+        if(this.state.cart.length === 0) {
+            return 0
+        }
+        var totalPrice = 0
+        for(var i = 0; i < this.state.cart.length; i++){
+            var element = this.state.cart[i]
+
+            totalPrice += element.item.price * element.quantity
+        }
+        return totalPrice
+    }
 
 
     render(){
         return (
             <div className="card">
             <div className="card-header"
-                 onClick={() => {this.insertItem({_id: 0, name :"grape"})}}>Shopping Cart</div>
+                 onClick={() => {this.insertItem({_id: 0, name :"grape",price : 1})}}>Shopping Cart</div>
                 <div className="card-body">
                     <ul className="list-group">
                         {
@@ -66,9 +78,9 @@ class ShoppingCart  extends React.Component{
                         )}
                     </ul>
                 </div>
-                <div className="card-footer" onClick={() => {this.removeItem({_id: 0, name :"grape"})}}>
+                <div className="card-footer" onClick={() => {this.removeItem({_id: 0, name :"grape", price : 1})}}>
                     <span>Total Cost:</span>
-                    <span className="float-right">0</span>
+                    <span className="float-right">{this.calculateSum()}</span>
                 </div>
         </div>)
     }

@@ -4,6 +4,7 @@ class ItemList extends React.Component{
 
     constructor(props) {
         super(props);
+
         //Predefined Items
         //It should be provided by the server
         this.state = {
