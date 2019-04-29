@@ -59,8 +59,7 @@ class ShoppingCart  extends React.Component{
     render(){
         return (
             <div className="card">
-            <div className="card-header"
-                 onClick={() => {this.insertItem({_id: 0, name :"grape",price : 1})}}>Shopping Cart</div>
+            <div className="card-header">Shopping Cart</div>
                 <div className="card-body">
                     <ul className="list-group">
                         {
@@ -69,6 +68,7 @@ class ShoppingCart  extends React.Component{
                                 return (
                                     <li
                                         className="list-group-item"
+                                        onClick={() => {this.removeItem(element.item)}}
                                         key={element.item.name}>
                                         {element.item.name}
                                         <span className="float-right badge-info">{element.quantity}</span>
@@ -78,7 +78,7 @@ class ShoppingCart  extends React.Component{
                         )}
                     </ul>
                 </div>
-                <div className="card-footer" onClick={() => {this.removeItem({_id: 0, name :"grape", price : 1})}}>
+                <div className="card-footer">
                     <span>Total Cost:</span>
                     <span className="float-right">{this.calculateSum()}</span>
                 </div>
