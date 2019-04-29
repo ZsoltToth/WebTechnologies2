@@ -1,9 +1,26 @@
-@import '../node_modules/font-awesome/scss/font-awesome.scss';
+$primary:       green !default;
+$secondary:     orange !default;
+$success:       yellow !default;
+$info:          red !default;
+$warning:       blue !default;
+$danger:        lime !default;
+$light:         gray !default;
+$dark:          gray !default;
 
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+
+/*
 h1 {  color: #ffffff;
   font-size: 12px;
   background: pink;
 
 }
 
-.important { color : red;}
+.important { color : red;
+p{
+  background: black;}
+}
+*/
