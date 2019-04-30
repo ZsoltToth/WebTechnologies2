@@ -1,4 +1,4 @@
-import EventEmitter from 'flux'
+import {EventEmitter} from 'events'
 
 class ShoppingCartStore extends EventEmitter{
 
