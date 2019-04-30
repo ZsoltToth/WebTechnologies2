@@ -11,11 +11,17 @@ class ShoppingCartActions {
     }
 
     removeSingleItem(item){
-        console.log('remove-single-item')
+        ShoppingCartDispatcher.handleViewAction({
+            actionType : ShoppingCartConstants.REMOVE_SINGLE_ITEM,
+            payload : item
+        })
     }
 
     removeAllItems(item){
-        console.log('remove-all-items')
+        ShoppingCartDispatcher.handleViewAction({
+            actionType : ShoppingCartConstants.REMOVE_ALL_ITEMS,
+            payload : item
+        })
     }
 
 }

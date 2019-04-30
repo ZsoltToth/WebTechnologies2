@@ -1,5 +1,6 @@
 import React from 'react'
 import ShoppingCartStore from "../store/ShoppingCartStore";
+import ShoppingCartActions from "../actions/ShoppingCartActions";
 
 class ShoppingCart  extends React.Component{
 
@@ -14,8 +15,7 @@ class ShoppingCart  extends React.Component{
 
     onChange(){
         this.setState({cart : ShoppingCartStore.getItems()})
-        console.log({state: this.state})
-        console.log({store : ShoppingCartStore.getItems()})
+
     }
 
     componentDidMount(){
@@ -38,7 +38,10 @@ class ShoppingCart  extends React.Component{
                                 return (
                                     <li
                                         className="list-group-item"
-                                        key={element.item._id}>
+                                        key={element.item._id}
+                                        onClick={() => {ShoppingCartActions.removeSingleItem(element.item)}}
+                                        onDoubleClick={() => ShoppingCartActions.removeAllItems(element.item)}
+                                        >
                                         {element.item.name}
                                         <span className="float-right badge-info">{element.quantity}</span>
                                         </li>
