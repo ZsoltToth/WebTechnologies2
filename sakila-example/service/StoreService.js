@@ -14,6 +14,29 @@ class StoreService{
             callback(staff);
         })
     }
+
+    queryInventoryOfStore(storeId, callback){
+        storeDAO.readInventory(storeId, (inventory) =>{
+            callback(inventory)
+        })
+    }
+
+    queryFilmsOfStore(storeId, callback){
+        storeDAO.readInventory(storeId, (inventory) =>{
+            var movies = [];
+            inventory.forEach((item) => {
+                if(
+                    movies.findIndex((movie) => {
+                        return movie.filmId === item.filmId
+                    }) === -1){
+                movies.push({title : item['Film Title'], filmId: item['filmId']})
+            }
+            });
+
+            callback(movies)
+        })
+    }
+
 }
 
 module.exports = new StoreService();

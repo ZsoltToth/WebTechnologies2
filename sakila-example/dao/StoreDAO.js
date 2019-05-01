@@ -36,7 +36,8 @@ class StoreDAO{
         client.connect((err)=>{
             if(err !== null){
                 console.log({error: err});
-                callback([])
+                callback([]);
+                return;
             }
 
             var db = client.db(SakilaConstants.dbName);
@@ -49,6 +50,27 @@ class StoreDAO{
             })
         })
     }
+
+    readInventory(storeId, callback){
+        var client = MongoClient(url);
+        client.connect((err)=>{
+            if(err !== null){
+                console.log({error: err});
+                callback([])
+            }
+
+            var db = client.db(SakilaConstants.dbName);
+            var collection = db.collection(SakilaConstants.collections.stores.collectionName);
+            var fields = SakilaConstants.collections.stores.fields;
+            var projection = {};
+            projection[fields.inventory] = 1;
+            collection.findOne({_id: storeId}, projection, (err,docs) =>{
+                callback(docs[fields.inventory]);
+            })
+        })
+    }
 }
+
+
 
 module.exports = new StoreDAO();

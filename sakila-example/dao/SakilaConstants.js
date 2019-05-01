@@ -7,7 +7,19 @@ module.exports = {
 
             }
         },
-        films : 'films',
+        films : {
+            collectionName: 'films',
+            id : "_id",
+            category : "Category",
+            description : "Description",
+            length : "Length",
+            rating : "Rating",
+            rentalDurantion : "Rental Duration",
+            replacementCost : "Replacement Cost",
+            specialFeatures : "Special Features",
+            title : "Title",
+            actors : 'Actors'
+        },
         stores : {
             collectionName : 'stores',
             fields : {

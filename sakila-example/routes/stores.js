@@ -13,8 +13,20 @@ router.get('/list', function(req, res) {
     })
 });
 
-router.get('/:storeId', (req,res)=>{
+router.get('/:storeId/staff', (req,res)=>{
     storeService.queryStaffOfStore(parseInt(req.params.storeId), (staff)=>{
+        res.status(200).send(staff)
+    })
+});
+
+router.get('/:storeId/inventory', (req,res)=>{
+    storeService.queryInventoryOfStore(parseInt(req.params.storeId), (staff)=>{
+        res.status(200).send(staff)
+    })
+});
+
+router.get('/:storeId/movies', (req,res)=>{
+    storeService.queryFilmsOfStore(parseInt(req.params.storeId), (staff)=>{
         res.status(200).send(staff)
     })
 });
