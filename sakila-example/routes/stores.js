@@ -13,4 +13,10 @@ router.get('/list', function(req, res, next) {
     })
 });
 
+router.get('/:storeId', (req,res)=>{
+    storeService.queryStaffOfStore(parseInt(req.params.storeId), (staff)=>{
+        res.status(200).send(staff)
+    })
+})
+
 module.exports = router;

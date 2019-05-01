@@ -13,10 +13,39 @@ class StoreDAO{
                 console.log({error: err});
                 callback([])
             }
+
             var db = client.db(SakilaConstants.dbName);
-            var collection = db.collection(SakilaConstants.collections.customers)
-            collection.find().toArray((err,docs) =>{
+            var collection = db.collection(SakilaConstants.collections.stores.collectionName)
+            var fields = SakilaConstants.collections.stores.fields;
+            var projection = {}
+            projection[fields.id] = 1
+            projection[fields.address] = 1
+            projection[fields.city] = 1
+            projection[fields.country] = 1
+            projection[fields.managerFirstName] = 1
+            projection[fields.managerLastName] = 1
+            projection[fields.phone] = 1
+            collection.find({}).project(projection).toArray((err,docs) =>{
                 callback(docs)
+            })
+        })
+    }
+
+    readStaff(storeId, callback){
+        var client = MongoClient(url);
+        client.connect((err)=>{
+            if(err !== null){
+                console.log({error: err});
+                callback([])
+            }
+
+            var db = client.db(SakilaConstants.dbName);
+            var collection = db.collection(SakilaConstants.collections.stores.collectionName)
+            var fields = SakilaConstants.collections.stores.fields;
+            var projection = {}
+            projection[fields.staff] = 1
+            collection.findOne({_id: storeId}, projection, (err,docs) =>{
+                callback(docs[fields.staff])
             })
         })
     }
