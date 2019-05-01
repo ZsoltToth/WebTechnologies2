@@ -1,19 +1,19 @@
-var storeDAO = require('../dao/StoreDAO')
+var storeDAO = require('../dao/StoreDAO');
 
 
 class StoreService{
 
     listStores(callback){
         storeDAO.readStores((stores) =>{
-            callback(stores)
+            callback(stores);
         })
     }
 
     queryStaffOfStore(storeId, callback){
         storeDAO.readStaff(storeId, (staff)=>{
-            callback(staff)
+            callback(staff);
         })
     }
 }
 
-module.exports = new StoreService()
+module.exports = new StoreService();
