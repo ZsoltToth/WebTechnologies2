@@ -20,10 +20,20 @@ router.get('/:storeId/staff', (req,res)=>{
 });
 
 router.get('/:storeId/inventory', (req,res)=>{
-    storeService.queryInventoryOfStore(parseInt(req.params.storeId), (staff)=>{
-        res.status(200).send(staff)
+    storeService.queryInventoryOfStore(parseInt(req.params.storeId), (inventory)=>{
+        res.status(200).send(inventory)
     })
 });
+
+router.get('/:storeId/inventory/:filmId', (req,res)=>{
+    storeService.queryFilmInstancesOfStore(
+        parseInt(req.params.storeId),
+        parseInt(req.params.filmId),
+        (films)=>{
+            res.status(200).send(films)
+        })
+});
+
 
 router.get('/:storeId/movies', (req,res)=>{
     storeService.queryFilmsOfStore(parseInt(req.params.storeId), (staff)=>{

@@ -69,6 +69,12 @@ class StoreDAO{
             })
         })
     }
+
+    readFilmFromInventory(storeId, filmId, callback){
+        this.readInventory(storeId, (films)=>{
+            callback(films.filter((film)=>{return film.filmId === filmId}));
+        })
+    }
 }
 
 

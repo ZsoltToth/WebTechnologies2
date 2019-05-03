@@ -37,6 +37,11 @@ class StoreService{
         })
     }
 
+    queryFilmInstancesOfStore(storeId, filmId, callback){
+        storeDAO.readFilmFromInventory(storeId,filmId, (films)=>{
+            callback(films)
+        })
+    }
 }
 
 module.exports = new StoreService();

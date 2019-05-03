@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 import StoreConstants from '../constants/StoreConstants'
 import StoresStore from '../store/StoresStore'
 import StoreDetails from "../components/StoreDetails";
+import MovieStore from "../store/MovieStore";
+import MovieInformationPanel from "../components/MovieInformationPanel";
 
 class SakilaDispatcher extends Dispatcher{
 
@@ -54,8 +56,28 @@ dispatcher.register((data)=>{
             StoresStore.emitChange();
         });
 
-    ReactDOM.render(React.createElement(StoreDetails),document.getElementById('mainContentPanel'))
+    ReactDOM.render(
+        React.createElement(StoreDetails),
+        document.getElementById('mainContentPanel'))
     StoresStore.emitChange();
+});
+
+dispatcher.register((data)=>{
+   if(data.payload.actionType !== StoreConstants.SHOW_MOVIE_INFORMATION){
+       return;
+   }
+   fetch('/movies/id/'+data.payload.payload)
+       .then((response)=>{return response.json()})
+       .then((response)=>{
+           MovieStore._selectedMovie = response;
+           MovieStore.emitChange();
+       });
+   ReactDOM.render(
+       React.createElement(MovieInformationPanel),
+       document.getElementById('mainContentPanel')
+   );
+   MovieStore.emitChange();
+
 });
 
 export default dispatcher;

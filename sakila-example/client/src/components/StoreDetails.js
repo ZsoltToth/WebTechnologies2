@@ -1,5 +1,6 @@
 import React from 'react'
 import StoresStore from "../store/StoresStore";
+import MovieActions from '../actions/MovieActions'
 
 class StoreDetails extends React.Component{
 
@@ -60,9 +61,8 @@ class StoreDetails extends React.Component{
                                     return (
                                         <li key={movie.filmId}
                                             className="list-group-item"
-                                            onClick={() => {console.log(movie)}}>
+                                            onClick={() => {MovieActions.showMovieInformation(movie.filmId)}}>
                                             {movie.title}
-
                                             </li>
                                     )
                                 })
@@ -72,6 +72,7 @@ class StoreDetails extends React.Component{
                     </div>
                 </>
                         }
+                        
             </>
         )
     }
