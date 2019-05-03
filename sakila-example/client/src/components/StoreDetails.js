@@ -33,32 +33,45 @@ class StoreDetails extends React.Component{
                         <td>{this.state.store.Address}, {this.state.store.City}, {this.state.store.Country}</td>
                     </tr>
                     <tr>
-                        <td>City</td>
-                        <td>{this.state.store.City}</td>
+                        <td>Manager</td>
+                        <td>{this.state.store['Manager First Name']} {this.state.store['Manager Last Name']}</td>
                     </tr>
-                    <tr>
-                        <td>Country</td>
-                        <td>{this.state.store.Country}</td>
-                    </tr>
+                    {this.state.store.Phone !== "" &&
+                        <tr>
+                            <td>Phone</td>
+                            <td>{this.state.store.Phone}</td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>
                 {this.state.store.inventory !== undefined &&
-                    <div className="row"><h1>Movies</h1><br/>
+                    <>
+                    <div className="row">
+                        <div className="col-12">
+                        <h1 className="h1">Movies</h1>
+                        </div>
+                    </div>
+                        <div className="row">
+                            <div className="col-12">
                         <ul className="list-group">
                             {
                                 this.state.store.inventory.map((movie) => {
                                     return (
                                         <li key={movie.filmId}
-                                            className="list-group-item">
+                                            className="list-group-item"
+                                            onClick={() => {console.log(movie)}}>
                                             {movie.title}
+
                                             </li>
                                     )
                                 })
                             }
                         </ul>
+                            </div>
                     </div>
-                }
+                </>
+                        }
             </>
         )
     }

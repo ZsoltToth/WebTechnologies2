@@ -29,6 +29,7 @@ class StoreList extends React.Component{
 
     render(){
         return(
+            
         <div className="card">
             <div className="card-header">Stores</div>
             <div className="card-body">
