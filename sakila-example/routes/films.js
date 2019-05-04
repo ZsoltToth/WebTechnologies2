@@ -15,9 +15,10 @@ router.get('/list',(req,res)=>{
 
 
 router.get('/id/:filmId',(req,res)=>{
-    filmService.listFilmById(parseInt(req.params.filmId), (film) =>{
-        res.status(200).send(film);
-    });
+    filmService.listFilmById(
+        parseInt(req.params.filmId), (film) =>{
+        res.status(200).send(film);}
+        );
 });
 
 
@@ -30,6 +31,13 @@ router.get('/category/:category', (reg,res)=>{
 router.get('/actors', (req,res)=>{
     filmService.listActors((actors)=>{
         res.status(200).send(actors);
+    });
+});
+
+router.get('/actors/:actorId', (req,res)=>{
+    filmService.listActor(parseInt(req.params.actorId),
+        (actor)=>{
+        res.status(200).send(actor);
     });
 });
 

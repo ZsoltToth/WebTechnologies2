@@ -104,6 +104,34 @@ class FilmDAO {
             })
         })
     }
+
+    readActorById(actorId, callback){
+        this.readActors((actors)=>{
+            var selectedActor = actors.find((actor)=>{
+                return actor.actorId === actorId
+            });
+            callback(selectedActor);
+        })
+    }
+
+    readFilmsOfActor(actorId, callback){
+        var client = MongoClient(url);
+        client.connect((err)=>{
+            if (err !== null) {
+                console.log(err);
+                callback({});
+                return;
+            }
+            var db = client.db(SakilaConstants.dbName);
+            var films = db.collection(SakilaConstants.collections.films.collectionName);
+            var selection = {"Actors.actorId" : actorId}
+            var projection = {};
+            projection[SakilaConstants.collections.films.title] = 1;
+            films.find(selection).project(projection).toArray((err, docs)=>{
+               callback(docs);
+            });
+        })
+    }
 }
 
 module.exports = new FilmDAO();

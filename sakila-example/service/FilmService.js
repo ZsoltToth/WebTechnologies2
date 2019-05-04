@@ -17,6 +17,16 @@ class FilmService{
     listActors(callback){
         filmDAO.readActors(callback);
     }
+
+    listActor(actorId, callback){
+        filmDAO.readActorById(actorId,(actor)=>{
+            actor.movies = [];
+            filmDAO.readFilmsOfActor(actorId, (films)=>{
+                actor.movies = films;
+                callback(actor);
+            });
+        });
+    }
 }
 
 module.exports = new FilmService();
