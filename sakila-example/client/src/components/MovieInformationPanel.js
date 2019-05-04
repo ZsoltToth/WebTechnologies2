@@ -1,6 +1,6 @@
 import React from 'react'
 import movieStore from '../store/MovieStore'
-import StoresStore from "../store/StoresStore";
+import ActorActions from "../actions/ActorActions";
 
 class MovieInformationPanel extends React.Component{
 
@@ -26,8 +26,45 @@ class MovieInformationPanel extends React.Component{
         if(this.state.movie === null){
             return (<p>Loading</p>)
         }
+        console.log(this.state.movie)
         return (
-            <p>{this.state.movie['Title']}</p>
+            <>
+            <div className="row">
+                <div className="col-12">
+                    <p>{this.state.movie['Title']} <span className="float-right badge-info">{this.state.movie['Rating']}</span></p>
+                </div>
+            </div>
+                <div className="row">
+                    <div className="col-12">
+                        <p>
+                            {this.state.movie['Length']} mins,
+                            {this.state.movie['Category']},
+                            Special Features: <i>{this.state.movie['Special Features']}</i>
+                        </p>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <span>
+                            {
+                                this.state.movie['Actors'].map((actor)=>{
+                                   return (<span
+                                       key={actor['actorId']}
+                                       onClick={()=>{ActorActions.showActor(actor['actorId'])}}>
+                                       <i className="text-capitalize">{actor['First name'].toLowerCase()} {actor['Last name'].toLowerCase()}</i>
+                                   </span> )
+                                })
+                            }
+                        </span>
+
+                    </div>
+                </div>
+            <div className="row">
+                <div className="col-12">
+                    <p>{this.state.movie['Description']}</p>
+                </div>
+            </div>
+                </>
         )
     }
 }

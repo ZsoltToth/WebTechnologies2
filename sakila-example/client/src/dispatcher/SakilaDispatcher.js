@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 
 
 import StoreConstants from '../constants/StoreConstants'
+import ActorConstants from '../constants/ActorConstants'
 import StoresStore from '../store/StoresStore'
 import StoreDetails from "../components/StoreDetails";
 import MovieStore from "../store/MovieStore";
@@ -58,7 +59,7 @@ dispatcher.register((data)=>{
 
     ReactDOM.render(
         React.createElement(StoreDetails),
-        document.getElementById('mainContentPanel'))
+        document.getElementById('mainContentPanel'));
     StoresStore.emitChange();
 });
 
@@ -78,6 +79,14 @@ dispatcher.register((data)=>{
    );
    MovieStore.emitChange();
 
+});
+
+dispatcher.register((data)=>{
+   if(data.payload.actionType !== ActorConstants.SHOW_ACTOR_DETAILS){
+       return;
+   }
+   console.log(data.payload.payload);
+   //TODO Implement fetching from server
 });
 
 export default dispatcher;

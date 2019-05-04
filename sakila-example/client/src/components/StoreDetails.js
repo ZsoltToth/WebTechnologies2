@@ -26,6 +26,8 @@ class StoreDetails extends React.Component{
         return (
             <>
             <div className="row">
+                <div className="col-12">
+                    <div className="well">
                 <table className="table table-bordered, table-striped">
                     <caption>Store Details</caption>
                     <tbody>
@@ -45,11 +47,13 @@ class StoreDetails extends React.Component{
                     }
                     </tbody>
                 </table>
+                    </div></div>
             </div>
                 {this.state.store.inventory !== undefined &&
                     <>
                     <div className="row">
                         <div className="col-12">
+
                         <h1 className="h1">Movies</h1>
                         </div>
                     </div>
@@ -68,6 +72,7 @@ class StoreDetails extends React.Component{
                                 })
                             }
                         </ul>
+                            
                             </div>
                     </div>
                 </>
