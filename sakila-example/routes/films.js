@@ -35,6 +35,10 @@ router.get('/actors', (req,res)=>{
 });
 
 router.get('/actors/:actorId', (req,res)=>{
+    if(req.params.actorId === undefined){
+        res.stat(404).send();
+        return;
+    }
     filmService.listActor(parseInt(req.params.actorId),
         (actor)=>{
         res.status(200).send(actor);

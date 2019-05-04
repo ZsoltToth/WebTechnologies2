@@ -26,7 +26,6 @@ class MovieInformationPanel extends React.Component{
         if(this.state.movie === null){
             return (<p>Loading</p>)
         }
-        console.log(this.state.movie)
         return (
             <>
             <div className="row">
@@ -37,8 +36,8 @@ class MovieInformationPanel extends React.Component{
                 <div className="row">
                     <div className="col-12">
                         <p>
-                            {this.state.movie['Length']} mins,
-                            {this.state.movie['Category']},
+                            {this.state.movie['Length']} mins,<span> </span>
+                            {this.state.movie['Category']},<span> </span>
                             Special Features: <i>{this.state.movie['Special Features']}</i>
                         </p>
                     </div>
@@ -51,7 +50,8 @@ class MovieInformationPanel extends React.Component{
                                    return (<span
                                        key={actor['actorId']}
                                        onClick={()=>{ActorActions.showActor(actor['actorId'])}}>
-                                       <i className="text-capitalize">{actor['First name'].toLowerCase()} {actor['Last name'].toLowerCase()}</i>
+                                       <i className="text-capitalize">{actor['First name'].toLowerCase()}<span> </span> {actor['Last name'].toLowerCase()}</i>
+                                       <span>; </span>
                                    </span> )
                                 })
                             }

@@ -9,6 +9,8 @@ import StoresStore from '../store/StoresStore'
 import StoreDetails from "../components/StoreDetails";
 import MovieStore from "../store/MovieStore";
 import MovieInformationPanel from "../components/MovieInformationPanel";
+import ActorStore from "../store/ActorStore";
+import ActorInformationPanel from '../components/ActorInformationPanel';
 
 class SakilaDispatcher extends Dispatcher{
 
@@ -82,11 +84,20 @@ dispatcher.register((data)=>{
 });
 
 dispatcher.register((data)=>{
-   if(data.payload.actionType !== ActorConstants.SHOW_ACTOR_DETAILS){
+    if(data.payload.actionType !== ActorConstants.SHOW_ACTOR_DETAILS){
        return;
    }
-   console.log(data.payload.payload);
-   //TODO Implement fetching from server
+
+   fetch('/movies/actors/'+data.payload.payload)
+       .then((response) => {return response.json()})
+       .then((result) =>{
+           ReactDOM.render(
+               React.createElement(ActorInformationPanel),
+               document.getElementById('mainContentPanel')
+           );
+           ActorStore._actor = result;
+           ActorStore.emitChange();
+       });
 });
 
 export default dispatcher;

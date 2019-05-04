@@ -20,7 +20,6 @@ class FilmService{
 
     listActor(actorId, callback){
         filmDAO.readActorById(actorId,(actor)=>{
-            actor.movies = [];
             filmDAO.readFilmsOfActor(actorId, (films)=>{
                 actor.movies = films;
                 callback(actor);
