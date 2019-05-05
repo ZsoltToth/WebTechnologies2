@@ -132,6 +132,40 @@ class FilmDAO {
             });
         })
     }
+
+    readDistinctFilmAttribute(field, callback){
+        var client = MongoClient(url);
+        client.connect((err)=> {
+            if (err !== null) {
+                console.log(err);
+                callback({});
+                return;
+            }
+            var db = client.db(SakilaConstants.dbName);
+            var films = db.collection(SakilaConstants.collections.films.collectionName);
+            films.distinct(field,
+                (err,docs)=>{
+                    callback(docs);
+                });
+        });
+    }
+
+    readCategories(callback){
+        this.readDistinctFilmAttribute(
+            SakilaConstants.collections.films.category,
+            (docs) => {callback(docs)}
+        );
+    }
+
+    readRatings(callback){
+        this.readDistinctFilmAttribute(
+            SakilaConstants.collections.films.rating,
+            (docs) => {callback(docs)}
+        );
+    }
+
 }
+
+
 
 module.exports = new FilmDAO();

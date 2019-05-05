@@ -3,10 +3,7 @@ import {EventEmitter} from 'events'
 class MovieStore extends EventEmitter{
 
     _selectedMovie = null;
-
-    constructor(props) {
-        super(props);
-    }
+    
 
     emitChange(){
         this.emit('change')

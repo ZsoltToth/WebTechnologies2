@@ -1,6 +1,5 @@
 import React from 'react'
 import actorStore from "../store/ActorStore";
-import movieStore from "../store/MovieStore";
 import MovieActions from "../actions/MovieActions";
 
 class ActorInformationPanel extends React.Component{

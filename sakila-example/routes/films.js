@@ -21,6 +21,17 @@ router.get('/id/:filmId',(req,res)=>{
         );
 });
 
+router.get('/categories', (reg,res)=>{
+    filmService.listCategories((films)=>{
+        res.status(200).send(films);
+    });
+});
+
+router.get('/ratings', (reg,res)=>{
+    filmService.listRatings((films)=>{
+        res.status(200).send(films);
+    });
+});
 
 router.get('/category/:category', (reg,res)=>{
     filmService.listFilmsByCategory(reg.params.category,(films)=>{

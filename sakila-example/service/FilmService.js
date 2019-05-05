@@ -26,6 +26,14 @@ class FilmService{
             });
         });
     }
+
+    listCategories(callback){
+        filmDAO.readCategories(callback);
+    }
+
+    listRatings(callback){
+        filmDAO.readRatings(callback);
+    }
 }
 
 module.exports = new FilmService();
