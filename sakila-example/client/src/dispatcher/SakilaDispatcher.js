@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 
 import StoreConstants from '../constants/StoreConstants'
 import ActorConstants from '../constants/ActorConstants'
+import MovieConstants from '../constants/MovieConstants'
 import StoresStore from '../store/StoresStore'
 import StoreDetails from "../components/StoreDetails";
 import MovieStore from "../store/MovieStore";
@@ -66,7 +67,7 @@ dispatcher.register((data)=>{
 });
 
 dispatcher.register((data)=>{
-   if(data.payload.actionType !== StoreConstants.SHOW_MOVIE_INFORMATION){
+   if(data.payload.actionType !== MovieConstants.SHOW_MOVIE_INFORMATION){
        return;
    }
    fetch('/movies/id/'+data.payload.payload)
@@ -99,5 +100,17 @@ dispatcher.register((data)=>{
            ActorStore.emitChange();
        });
 });
+
+dispatcher.register((data)=>{
+    if(data.payload.actionType !== MovieConstants.READ_CATEGORY_LIST){
+        return;
+    }
+    fetch('/movies/categories')
+        .then((response)=> {return response.json()})
+        .then((result) =>{
+           MovieStore._categories = result;
+           MovieStore.emitChange();
+        });
+})
 
 export default dispatcher;
