@@ -30,7 +30,12 @@ class CategoryList extends  React.Component{
                 <div className="card-body">
                         {this.state.categories.map((category)=>{
                             return(
-                                <span key={category}>
+                                <span
+                                    key={category}
+                                    onClick={()=>{
+                                        MovieActions.listMovies(category)
+                                    }}
+                                >
                                     <i className="font-italic, badge-info badge-pill">{category}</i>
                                     <span> </span>
                                 </span>

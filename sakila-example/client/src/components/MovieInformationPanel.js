@@ -1,6 +1,7 @@
 import React from 'react'
 import movieStore from '../store/MovieStore'
 import ActorActions from "../actions/ActorActions";
+import MovieActions from "../actions/MovieActions";
 
 class MovieInformationPanel extends React.Component{
 
@@ -30,14 +31,23 @@ class MovieInformationPanel extends React.Component{
             <>
             <div className="row">
                 <div className="col-12">
-                    <p>{this.state.movie['Title']} <span className="float-right badge-info">{this.state.movie['Rating']}</span></p>
+                    <p>
+                        {this.state.movie['Title']}
+                        <span
+                            className="float-right badge-info"
+                            onClick={()=>{MovieActions.listMovies(undefined, this.state.movie['Rating]'])}}>
+                            {this.state.movie['Rating']}
+                        </span>
+                    </p>
                 </div>
             </div>
                 <div className="row">
                     <div className="col-12">
                         <p>
                             {this.state.movie['Length']} mins,<span> </span>
-                            {this.state.movie['Category']},<span> </span>
+                            <span onClick={()=> MovieActions.listMovies(this.state.movie['Category'])}>
+                                {this.state.movie['Category']},<span> </span>
+                            </span>
                             Special Features: <i>{this.state.movie['Special Features']}</i>
                         </p>
                     </div>

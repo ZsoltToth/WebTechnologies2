@@ -3,8 +3,10 @@ import {EventEmitter} from 'events'
 class MovieStore extends EventEmitter{
 
     _selectedMovie = null;
+    _queriedMovies = [];
     _categories = [];
     _ratings = [];
+
 
 
     emitChange(){

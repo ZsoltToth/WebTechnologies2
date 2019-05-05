@@ -16,6 +16,29 @@ class MovieActions {
         });
     }
 
+    fetchRatings(){
+        SakilaDispatcher.handleViewAction({
+            actionType: MovieConstants.READ_RATING_LIST,
+            payload : null
+        });
+    }
+
+    /**
+     * Params could be replaced with an options object.
+     *
+     * @param category
+     * @param rating
+     */
+    listMovies(category, rating){
+        SakilaDispatcher.handleViewAction({
+            actionType : MovieConstants.LIST_MOVIES,
+            payload : {
+                category : category,
+                rating : rating
+            }
+        });
+    }
+
 
 
 }

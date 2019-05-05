@@ -12,6 +12,7 @@ import MovieStore from "../store/MovieStore";
 import MovieInformationPanel from "../components/MovieInformationPanel";
 import ActorStore from "../store/ActorStore";
 import ActorInformationPanel from '../components/ActorInformationPanel';
+import MovieList from "../components/MovieList";
 
 class SakilaDispatcher extends Dispatcher{
 
@@ -111,6 +112,45 @@ dispatcher.register((data)=>{
            MovieStore._categories = result;
            MovieStore.emitChange();
         });
-})
+});
+
+dispatcher.register((data)=>{
+    if(data.payload.actionType !== MovieConstants.READ_RATING_LIST){
+        return;
+    }
+    fetch('/movies/ratings')
+        .then((response)=> {return response.json()})
+        .then((result) =>{
+            MovieStore._ratings = result;
+            MovieStore.emitChange();
+        });
+});
+
+dispatcher.register((data)=>{
+    if(data.payload.actionType !== MovieConstants.LIST_MOVIES){
+        return;
+    }
+    ReactDOM.render(
+        React.createElement(MovieList),
+        document.getElementById('mainContentPanel')
+    );
+    fetch('/movies')
+        .then((response) =>{return response.json()})
+        .then((movies)=>{
+            if(data.payload.payload.category !== undefined){
+                movies = movies.filter((movie)=>{
+                    return movie['Category'] === data.payload.payload.category;
+                });
+            }
+            if(data.payload.payload.rating !== undefined){
+                movies = movies.filter((movie)=>{
+                    return movie['Rating'] === data.payload.payload.rating;
+                })
+            }
+            MovieStore._queriedMovies = movies;
+            MovieStore.emitChange();
+        })
+
+});
 
 export default dispatcher;
