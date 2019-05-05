@@ -13,6 +13,7 @@ import MovieInformationPanel from "../components/MovieInformationPanel";
 import ActorStore from "../store/ActorStore";
 import ActorInformationPanel from '../components/ActorInformationPanel';
 import MovieList from "../components/MovieList";
+import MovieForm from "../components/MovieForm";
 
 class SakilaDispatcher extends Dispatcher{
 
@@ -151,6 +152,23 @@ dispatcher.register((data)=>{
             MovieStore.emitChange();
         })
 
+});
+
+dispatcher.register((data)=>{
+   if(data.payload.actionType !== MovieConstants.SHOW_MOVIE_FORM){
+       return;
+   }
+   ReactDOM.render(
+     React.createElement(MovieForm),
+     document.getElementById('mainContentPanel')
+   );
+});
+
+dispatcher.register((data)=>{
+   if(data.payload.actionType !== MovieConstants.ADD_MOVIE){
+       return;
+   }
+   console.log(data.payload.payload);
 });
 
 export default dispatcher;

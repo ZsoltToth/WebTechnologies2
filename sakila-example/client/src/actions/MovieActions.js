@@ -39,6 +39,20 @@ class MovieActions {
         });
     }
 
+    showMovieForm(){
+        SakilaDispatcher.handleViewAction({
+            actionType : MovieConstants.SHOW_MOVIE_FORM,
+            payload : null
+        });
+    }
+
+    addMovie(movie){
+        SakilaDispatcher.handleViewAction({
+            actionType : MovieConstants.ADD_MOVIE,
+            payload : movie
+        });
+    }
+
 
 
 }
