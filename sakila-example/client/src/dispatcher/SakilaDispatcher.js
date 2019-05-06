@@ -168,7 +168,23 @@ dispatcher.register((data)=>{
    if(data.payload.actionType !== MovieConstants.ADD_MOVIE){
        return;
    }
-   console.log(data.payload.payload);
+    console.log(data.payload.payload);
+    console.log(JSON.stringify(data.payload.payload));
+
+   fetch('/movies/add',{
+       method : 'POST',
+       headers : {
+           "Content-Type" : 'application/json'
+       },
+       body : JSON.stringify(data.payload.payload)
+   });
+   /*
+       .then((response) => {return response.json()})
+       .then((result)=>{
+           console.log(result)
+       })
+      */
+   //console.log(data.payload.payload);
 });
 
 export default dispatcher;

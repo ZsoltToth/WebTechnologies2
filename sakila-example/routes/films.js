@@ -33,6 +33,7 @@ router.get('/ratings', (reg,res)=>{
     });
 });
 
+
 router.get('/category/:category', (reg,res)=>{
     filmService.listFilmsByCategory(reg.params.category,(films)=>{
         res.status(200).send(films);
@@ -56,5 +57,9 @@ router.get('/actors/:actorId', (req,res)=>{
     });
 });
 
+router.post('/add', (req,res)=>{
+    console.log({req : req.body});
+    res.status(200).send();
+})
 
 module.exports = router;
