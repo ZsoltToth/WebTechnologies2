@@ -16,7 +16,11 @@ class MovieForm extends React.Component{
                 title : "",
                 rating : "",
                 category : "",
-                description : ""
+                description : "",
+                length : 0,
+                rentalDuration : 0,
+                replacementCost : 0,
+                specialFeatures: "",
             }
         }
 
@@ -40,7 +44,14 @@ class MovieForm extends React.Component{
                 <div className="col-12">
                     <div className="row">
                         <div className="col-4">Title</div>
-                        <div className="col-8"><input type="text"/></div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.title = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="text"/>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-4">Rating</div>
@@ -83,7 +94,62 @@ class MovieForm extends React.Component{
                     </div>
                     <div className="row">
                         <div className="col-4">Description</div>
-                        <div className="col-8"><input type="text"/></div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.description = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="text"/>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-4">Length</div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.length = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="number"/>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-4">Rental Duration</div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.rentalDuration = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="number"/>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-4">Replacement Cost</div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.replacementCost = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="number"/>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                        <div className="col-4">Special Features</div>
+                        <div className="col-8">
+                            <input
+                                onChange={(event)=>{
+                                    this.state.movie.specialFeatures = event.target.value
+                                    this.setState({movie : this.state.movie});
+                                }}
+                                type="text"/>
+                        </div>
                     </div>
 
                     <button
